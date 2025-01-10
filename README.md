@@ -23,6 +23,12 @@ npx shadcn@latest add alert-dialog
 npx shadcn@latest add dialog
 npx shadcn@latest add badge
 npx shadcn@latest add calendar
+npx shadcn@latest add avatar
+
+npx shadcn@latest add carousel
+npm install embla-carousel-autoplay --save
+
+
 
 
 
