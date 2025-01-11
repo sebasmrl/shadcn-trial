@@ -28,6 +28,16 @@ npx shadcn@latest add avatar
 npx shadcn@latest add carousel
 npm install embla-carousel-autoplay --save
 
+npx shadcn@latest add checkbox
+npx shadcn@latest add command
+
+#combobox - necesita de command y popover
+npx shadcn@latest add command
+npx shadcn@latest add popover
+
+
+
+
 
 
 
