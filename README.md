@@ -35,11 +35,12 @@ npx shadcn@latest add command
 npx shadcn@latest add command
 npx shadcn@latest add popover
 
-
-
-
-
-
+npx shadcn@latest add context-menu
+npx shadcn@latest add menubar
+npx shadcn@latest add input-otp
+npx shadcn@latest add progress
+npx shadcn@latest add sheet
+npx shadcn@latest add skeleton
 
 
 
