@@ -41,6 +41,11 @@ npx shadcn@latest add input-otp
 npx shadcn@latest add progress
 npx shadcn@latest add sheet
 npx shadcn@latest add skeleton
+npx shadcn@latest add slider
+npx shadcn@latest add sonner
+npx shadcn@latest add toast
+npx shadcn@latest add tabs
+
 
 
 
