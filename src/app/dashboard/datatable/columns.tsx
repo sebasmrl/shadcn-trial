@@ -2,7 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Payment } from "@/data/payments.data"
-import { ColumnDef } from "@tanstack/react-table"
+import { ColumnDef, SortDirection } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MoreHorizontal } from "lucide-react";
+import { ArrowUpDown, ChevronDownIcon, ChevronUpIcon, MoreHorizontal } from "lucide-react";
 import { toast } from "sonner";
 
 // This type is used to define the shape of our data.
@@ -27,14 +27,45 @@ import { toast } from "sonner";
   export const columns: ColumnDef<Payment>[] = [
  */
 
+//Componente para las columnas si estan descendentes o ascendentes
+const SortedIcon = ({isSorted}:{ isSorted:SortDirection | false})=>{
+    if(isSorted === "asc") return <ChevronUpIcon />
+    if(isSorted === "desc") return <ChevronDownIcon />
+    return null;
+}
+
+
+
 export const columns: ColumnDef<Payment>[] = [
     {
         accessorKey: "clientName",
-        header: () => <span>Client Name</span>, //se puede devolver un fComponent
+        header: ({ column }) => {
+            return (
+              <Button
+                className="flex w-full justify-start"
+                variant="ghost"
+                onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+              >
+                <span className="capitalize">client name</span>
+                <SortedIcon  isSorted={column.getIsSorted()} />
+              </Button>
+            )   
+          },//se puede devolver un fComponent
     },
     {
         accessorKey: "status",
-        header: "Status",
+        header: ({ column }) => {
+            return (
+              <Button
+                className="flex w-full justify-start"
+                variant="ghost"
+                onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+              >
+                <span className="capitalize">Status</span>
+                <SortedIcon  isSorted={column.getIsSorted()} />
+              </Button>
+            )   
+          },//se puede devolver un fComponent
         cell: ({ row }) => {
             const status = row.getValue('status') as string;
             type VariantType = "destructive" | "success" | "warning" | "outline" |"info" | "default"; 
@@ -51,11 +82,34 @@ export const columns: ColumnDef<Payment>[] = [
 
     {
         accessorKey: "email",
-        header: "Email",
+        header: ({ column }) => {
+            return (
+              <Button
+                className="flex w-full justify-start"
+                variant="ghost"
+                onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+              >
+                <span>Email</span>
+                <ArrowUpDown className="ml-2 h-4 w-4" />
+              </Button>
+            )   
+          },
     },
     {
         accessorKey: "amount",
-        header: () => <div className="text-right">Amount</div>,
+        header: ({ column }) => {
+            return (
+              <Button
+                className="flex w-full justify-end"
+                variant="ghost"
+                onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+              >
+                <span className="capitalize">Amount</span>
+                <SortedIcon  isSorted={column.getIsSorted()} />
+              </Button>
+            )   
+        },//se puede devolver un fComponent
+
         cell: ({ row }) => {
             const amount = parseFloat(row.getValue("amount"))
             const formatted = new Intl.NumberFormat("en-US", {
