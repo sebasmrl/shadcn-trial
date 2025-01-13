@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+#Only available for github pages
+#/docs
+
 # next.js
 /.next/
 /out/

@@ -9,7 +9,8 @@ const nextConfig: NextConfig = {
         hostname: 'github.com'
       }
     ]
-  }
+  },
+  distDir: 'docs'
 };
 
 export default nextConfig;
