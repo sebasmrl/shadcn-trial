@@ -47,6 +47,15 @@ npx shadcn@latest add toast
 npx shadcn@latest add tabs
 
 
+#Datatable and his datasource
+npm i unique-names-generator uuid
+npx shadcn@latest add table
+npm install @tanstack/react-table
+
+npx shadcn@latest add dropdown-menu
+
+
+
 
 
 ```
