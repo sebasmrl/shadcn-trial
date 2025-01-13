@@ -53,6 +53,8 @@ npx shadcn@latest add table
 npm install @tanstack/react-table
 
 npx shadcn@latest add dropdown-menu
+npx shadcn@latest add select
+
 
 
 
