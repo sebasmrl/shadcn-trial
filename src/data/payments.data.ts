@@ -25,7 +25,7 @@ const randomEmail = (clientName: string) => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const payments: Payment[] = Array.from({ length: 200 }, (_) => {
+export const payments: Payment[] = Array.from({ length: 100 }, (_) => {
   const randomName = uniqueNamesGenerator(config);
 
   return {
