@@ -15,6 +15,9 @@ import {
 
     ColumnFiltersState, //
     getFilteredRowModel, //
+
+    VisibilityState,
+
 } from "@tanstack/react-table";
 
 import {
@@ -30,7 +33,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-
+import {
+    DropdownMenu,
+    DropdownMenuCheckboxItem,
+    DropdownMenuContent,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 
 interface DataTableProps<TData, TValue> {
@@ -44,6 +52,7 @@ export function DataTable<TData, TValue>({ columns, data, }: DataTableProps<TDat
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [currentStatus, setCurrentStatus] = useState('all');
+    const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
     const table = useReactTable({
         data,
@@ -59,16 +68,19 @@ export function DataTable<TData, TValue>({ columns, data, }: DataTableProps<TDat
         onColumnFiltersChange: setColumnFilters,
         getFilteredRowModel: getFilteredRowModel(),
 
+        onColumnVisibilityChange: setColumnVisibility,
+
         state: {
             sorting,
-            columnFilters
+            columnFilters,
+            columnVisibility,
         },
     })
 
     return (
-        <div className="mX-2">
+        <div className="mx-2">
 
-            <div className="flex items-center py-4 justify-between">
+            <div className="flex items-center py-4 justify-between gap-2">
                 <Input
                     placeholder="Filter emails..."
                     value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
@@ -107,6 +119,34 @@ export function DataTable<TData, TValue>({ columns, data, }: DataTableProps<TDat
                         </SelectGroup>
                     </SelectContent>
                 </Select>
+
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button variant="outline" className="ml-auto">
+                            Columns
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                        {table.getAllColumns()
+                            .filter( (column) => column.getCanHide() )
+                            .filter( (column) => column.id != "actions" ) //es el mismo identificador puesto en columns.tsx
+                            .map((column) => {
+                                return (
+                                    <DropdownMenuCheckboxItem
+                                        key={column.id}
+                                        className="capitalize"
+                                        checked={column.getIsVisible()}
+                                        onCheckedChange={(value) =>
+                                            column.toggleVisibility(!!value)
+                                        }
+                                    >
+                                        {column.id}
+                                    </DropdownMenuCheckboxItem>
+                                )
+                            })}
+                    </DropdownMenuContent>
+                </DropdownMenu>
+
             </div>
 
             <div className="rounded-md border">

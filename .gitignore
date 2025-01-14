@@ -14,7 +14,7 @@
 /coverage
 
 #Only available for github pages
-#/docs
+/docs
 
 # next.js
 /.next/
