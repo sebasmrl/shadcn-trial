@@ -60,6 +60,8 @@ npx shadcn@latest add radio-group
 npx shadcn@latest add switch
 
 
+npm install next-themes
+
 
 
 
