@@ -29,6 +29,8 @@ const links = [
   { name: "toast", href: "toast" },
   { name: "tabs", href: "tabs" },
   { name: "datatable", href: "datatable" },
+  { name: "Form", href: "form" },
+  { name: "theme", href: "theme" },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 

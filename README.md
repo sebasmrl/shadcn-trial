@@ -55,6 +55,10 @@ npm install @tanstack/react-table
 npx shadcn@latest add dropdown-menu
 npx shadcn@latest add select
 
+npx shadcn@latest add form
+npx shadcn@latest add radio-group
+npx shadcn@latest add switch
+
 
 
 
