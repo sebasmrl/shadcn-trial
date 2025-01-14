@@ -12,7 +12,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function ThemePage() {
-  const { setTheme } = useTheme()
+  //hook de next-theme para cambiar el tema que envuelve el provider 
+  const { setTheme } = useTheme();
 
   return (
     <div>

@@ -36,6 +36,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Se debe envolver en el provider generado en components usando npm i next-themes  */}
         <ThemeProvider
             attribute="class"
             defaultTheme="system"
